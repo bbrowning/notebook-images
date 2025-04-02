@@ -1,0 +1,5 @@
+FROM registry.redhat.io/rhelai1/instructlab-nvidia-rhel9:1.4 AS ilab
+
+RUN pip install -r https://raw.githubusercontent.com/opendatahub-io/notebooks/refs/tags/v1.28.0/jupyter/minimal/ubi9-python-3.11/requirements.txt
+
+ENTRYPOINT ["python", "-m", "jupyter", "lab", "--allow-root", "--ServerApp.root_dir=${HOME}", "--ServerApp.ip=localhost", "--ServerApp.allow_origin='*'", "--ServerApp.open_browser=False"]
